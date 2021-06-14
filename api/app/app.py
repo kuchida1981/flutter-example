@@ -1,6 +1,7 @@
 from flask import Flask
 from . import api
 from . import database
+from . import cors
 
 
 def create_app():
@@ -10,5 +11,6 @@ def create_app():
     api.api.init_app(app)
     database.db.init_app(app)
     database.migrate.init_app(app, database.db)
+    cors.cors.init_app(app)
 
     return app
