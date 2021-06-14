@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void onPressed() {
     setState(() {
-      final hoge = http.get(Uri.parse('http://192.168.99.109:8000/samples/1'));
+      final hoge = http.get(Uri.parse('https://flutter-example-api.herokuapp.com/samples/1'));
       hoge.then((response) =>
       {
         if (response.statusCode == 200) {
