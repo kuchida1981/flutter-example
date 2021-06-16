@@ -1,3 +1,11 @@
+Fluttter Web アプリを使ったお遊び.
+
+Flutter WebをGithub Pagesで, Web APIをHerokuで,
+認証にFirebase Authentication を使っている.
+
+https://kuchida1981.github.io/flutter-example/
+
+
 # flutter_examples
 
 A new Flutter project.
