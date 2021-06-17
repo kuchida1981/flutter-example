@@ -1,19 +1,12 @@
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-import functools
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+from app.settings import Settings
 
 
-db = SQLAlchemy()
-migrate = Migrate()
+settings = Settings()
 
-def session(func):
-    @functools.wraps(func)
-    def wraps(*args, **kwargs):
-        try:
-            session = db.session()
-            response = func(*args, **kwargs, session=session)
-            session.commit()
-            return response
-        except:
-            session.rollback()
-    return wraps
+engine = create_engine(settings.sqlalchemy_database_uri, echo=True, pool_size=20)
+Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Model = declarative_base()

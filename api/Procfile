@@ -1,1 +1,1 @@
-web: flask db upgrade && bin/start-nginx gunicorn -c config/gunicorn.conf.py "app:create_app()"
+web: alembic upgrade head && bin/start-nginx gunicorn -k uvicorn.workers.UvicornWorker -c config/gunicorn.conf.py "app.main:app"

@@ -1,6 +1,8 @@
-from .database import db
+from .database import Model
+from sqlalchemy import Column, String, Integer
 
 
-class Sample(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String)
+class Sample(Model):
+    __tablename__ = "sample"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String)
