@@ -16,4 +16,5 @@ class SampleIn(BaseModel):
     class Config:
         orm_mode = True
 
+
 SampleList = List[Sample]

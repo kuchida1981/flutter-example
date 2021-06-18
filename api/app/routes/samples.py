@@ -1,7 +1,6 @@
 from fastapi import APIRouter, status, Depends, HTTPException
 from app import models
 from app import dependencies
-from app.database import Sample
 from .sample_repository import SampleRepository
 
 
