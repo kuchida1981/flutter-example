@@ -4,18 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "==1.1.2"
 gunicorn = "*"
-flask-restx = "*"
-flask-sqlalchemy = "*"
-flask-migrate = "*"
 psycopg2-binary = "*"
 google-api-python-client = "*"
-flask-cors = "*"
+fastapi = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+sqlalchemy = "*"
+alembic = "*"
 
 [dev-packages]
-flask-shell-ipython = "*"
 python-dotenv = "*"
+ipython = "*"
 
 [requires]
 python_version = "3.9"

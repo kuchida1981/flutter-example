@@ -1,9 +1,8 @@
-from .database import db, migrate, session
+from .database import Session, Model
 from .sample import Sample
 
 
 __all__ = [
-    "db", "migrate",
-    "session",
+    "Session", "Model",
     "Sample",
 ]
