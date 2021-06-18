@@ -4,9 +4,9 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - name: change current directory
         run: cd ./api
-      - uses: actions/checkout@v1
       - uses: grantmcconnaughey/lintly-flake8-github-action@v1.0
         with:
           # The GitHub API token to create reviews with
