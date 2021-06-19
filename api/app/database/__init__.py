@@ -1,6 +1,5 @@
-from .database import Session, Model
+from .database import Model, Session
 from .sample import Sample
-
 
 __all__ = [
     "Session", "Model",

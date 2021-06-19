@@ -1,7 +1,9 @@
-from fastapi import Response, status, Request
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.logger import logger
 import traceback
+
+from fastapi import Request, Response, status
+from fastapi.logger import logger
+from fastapi.middleware.cors import CORSMiddleware
+
 from app.database import Session
 
 

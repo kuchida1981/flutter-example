@@ -1,6 +1,7 @@
-from app.models import SampleIn
 from app import database as db
-from . repository_base import RepositoryBase
+from app.models import SampleIn
+
+from .repository_base import RepositoryBase
 
 
 class SampleRepository(RepositoryBase):

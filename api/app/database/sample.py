@@ -1,5 +1,6 @@
+from sqlalchemy import Column, Integer, String
+
 from .database import Model
-from sqlalchemy import Column, String, Integer
 
 
 class Sample(Model):
