@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Response, status
-from . import routes
-from . import middlewares
 
+from . import middlewares, routes
 
 app = FastAPI(
     title="Flutter Example API",

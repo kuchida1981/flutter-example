@@ -1,9 +1,8 @@
-from fastapi import APIRouter, status, Depends, HTTPException
-from app import models
-from app import dependencies
-from app.database import Sample
-from .sample_repository import SampleRepository
+from fastapi import APIRouter, Depends, HTTPException, status
 
+from app import dependencies, models
+
+from .sample_repository import SampleRepository
 
 router = APIRouter(
     prefix="/samples"

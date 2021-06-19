@@ -1,4 +1,5 @@
 from typing import List
+
 from pydantic import BaseModel
 
 
@@ -15,5 +16,6 @@ class SampleIn(BaseModel):
 
     class Config:
         orm_mode = True
+
 
 SampleList = List[Sample]
