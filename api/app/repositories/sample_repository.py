@@ -1,19 +1,23 @@
+from typing import List, Optional
+
 from app import database as db
-from app.models import SampleIn
+from app import models
 
 from .repository_base import RepositoryBase
+
+ItemEntity = db.Sample
+ItemIn = models.SampleIn
 
 
 class SampleRepository(RepositoryBase):
 
-    def create(self, sample_in: SampleIn):
-        sample = db.Sample(**dict(sample_in))
-        self._session.add(sample)
-        self._session.flush()
-        return sample
+    item_entity_class = ItemEntity
 
-    def list_item(self):
-        return self._session.query(db.Sample).all()
+    def create(self, item_in: ItemIn) -> ItemEntity:
+        return super().create_item(item_in)
 
-    def get_item(self, item_id: int):
-        return self._session.query(db.Sample).get(item_id)
+    def listitem(self, page_params: models.PaginationParams) -> List[ItemEntity]:
+        return super().listitem(page_params)
+
+    def getitem(self, item_id: int) -> Optional[ItemEntity]:
+        return super().getitem(item_id)
