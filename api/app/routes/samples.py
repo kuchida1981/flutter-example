@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 
 from app import models
 
-from .sample_repository import SampleRepository
+from app.repositories import SampleRepository
 
 router = APIRouter(
     prefix="/samples"
