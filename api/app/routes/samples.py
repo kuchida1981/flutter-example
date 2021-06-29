@@ -1,8 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 
-from app import dependencies, models
-
-from .sample_repository import SampleRepository
+from app import models
+from app.repositories import SampleRepository
 
 router = APIRouter(
     prefix="/samples"
@@ -15,16 +14,22 @@ router = APIRouter(
     description="Sample collection",
     response_model=models.SampleList,
 )
-async def list_item(session=Depends(dependencies.db_session)):
-    return SampleRepository(session).list_item()
+async def list_item(
+    page_params: models.PaginationParams = Depends(),
+    repository: SampleRepository = Depends(),
+):
+    return repository.listitem(page_params)
 
 
 @router.get(
     "/{item_id}",
     response_model=models.Sample,
 )
-async def get(item_id: int, session=Depends(dependencies.db_session)):
-    if (sample := SampleRepository(session).get_item(item_id)) is None:
+async def get(
+    item_id: int,
+    repository: SampleRepository = Depends(),
+):
+    if (sample := repository.getitem(item_id)) is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND)
 
     return sample
@@ -33,9 +38,12 @@ async def get(item_id: int, session=Depends(dependencies.db_session)):
 @router.post(
     "",
     summary="Post Sample",
-    description="Sample list",
+    description="Post Sample",
     status_code=status.HTTP_201_CREATED,
     response_model=models.Sample,
 )
-async def post(sample: models.SampleIn, session=Depends(dependencies.db_session)):
-    return SampleRepository(session).create(sample)
+async def post(
+    sample: models.SampleIn,
+    repository: SampleRepository = Depends(),
+):
+    return repository.create(sample)

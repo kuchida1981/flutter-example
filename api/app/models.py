@@ -19,3 +19,9 @@ class SampleIn(BaseModel):
 
 
 SampleList = List[Sample]
+
+
+class PaginationParams:
+    def __init__(self, limit: int = 10, offset: int = 0):
+        self.limit = limit
+        self.offset = offset
